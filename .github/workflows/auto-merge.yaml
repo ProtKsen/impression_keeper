@@ -1,0 +1,36 @@
+name: Automerge
+
+on:
+  push
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+
+      - name: Install dependencies
+        run:
+          poetry install
+
+      - name: Linters
+        uses: pre-commit/action@v3.0.0
+
+      - name: Test with pytest
+        run:
+          poetry run pytest
+
+      - name: Create Pull Request
+        run: |
+          gh pr create -B main -H feature --title 'Merge feature into main' --body 'Created by Github action'
+          gh pr merge --auto --squash feature
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
