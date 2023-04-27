@@ -4,7 +4,7 @@ on:
   push
 
 jobs:
-  linters:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -24,15 +24,11 @@ jobs:
       - name: Linters
         uses: pre-commit/action@v3.0.0
 
-  tests:
-    runs-on: ubuntu-latest
-    steps:
       - name: Test with pytest
         run:
           poetry run pytest
 
-  pull-requests:
-    runs-on: ubuntu-latest
+  build:
     steps:
       - name: Create Pull Request
         run: |
