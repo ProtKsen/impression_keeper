@@ -29,6 +29,7 @@ jobs:
           poetry run pytest
 
   build:
+    runs-on: ubuntu-latest
     steps:
       - name: Create Pull Request
         run: |
