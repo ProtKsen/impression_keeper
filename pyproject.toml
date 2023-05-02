@@ -12,6 +12,7 @@ django = "^4.2"
 python-dotenv = "^1.0.0"
 psycopg2-binary = "^2.9.6"
 pytest-django = "^4.5.2"
+django-allauth = "^0.54.0"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.2.2"
@@ -39,3 +40,6 @@ exclude = '''
 
 [flake8]
 line-length = 99
+
+[tool.djlint]
+ignore="D018"
