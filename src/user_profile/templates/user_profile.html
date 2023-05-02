@@ -1,0 +1,29 @@
+{% extends "layouts.html" %}
+{% load static %}
+
+{% load socialaccount %}
+{% providers_media_js %}
+
+{% block title %}
+Impression Keeper
+{% endblock title %}
+
+{% block content %}
+
+<section id="team" class="team">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <div class="member" data-aos="fade-up">
+                    <div class="pic"><img src=" {{ user.socialaccount_set.all.0.get_avatar_url }} " class="img-fluid rounded-circle" alt=""></div>
+                    <div class="member-info">
+                      <h4>{{ user.socialaccount_set.all.0.extra_data.name }}</h4>
+                        <a href=" {% url 'logout' %} " class="about-btn"><span> Log out </span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

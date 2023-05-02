@@ -42,4 +42,4 @@ exclude = '''
 line-length = 99
 
 [tool.djlint]
-ignore="D018"
+ignore="D018,H006"

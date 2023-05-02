@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.google",
     "home",
     "authentication",
+    "user_profile",
 ]
 
 MIDDLEWARE = [
@@ -131,7 +132,7 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 2
 
 LOGIN_URL = "/authenticate/login/"
-LOGIN_REDIRECT_URL = "home"
+LOGIN_REDIRECT_URL = "/userprofile/"
 
 # Additional configuration settings
 SOCIALACCOUNT_QUERY_EMAIL = True
