@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 
 
 @user_passes_test(lambda u: u.is_anonymous, login_url="home")
-def login(request):
+def auth_login(request):
     return render(request, "login.html")
 
 
