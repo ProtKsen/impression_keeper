@@ -10,7 +10,8 @@ from user_profile.models import Place
 @login_required
 def user_profile(request):
     user = request.user
-    context = {"user": user}
+    places = Place.objects.filter(user=request.user.id)
+    context = {"user": user, "places": places}
     return render(request, "user_profile.html", context=context)
 
 

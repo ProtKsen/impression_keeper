@@ -21,20 +21,34 @@ Impression Keeper
                         <h4>{{ user.socialaccount_set.all.0.extra_data.name }}</h4>
                         <a href=" {% url 'logout' %} " class="about-btn" role="button" aria-pressed="true"><span> Log out </span> </a>
                     </div>
-                </div>
+                    </div>
             </div>
         </div>
     </div>
 
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-6 text-center">
-                <h4> У вас пока нет ни одного воспоминания </h4>
-                <a href=" {% url 'add_place' %}" class="btn btn-primary btn-lg" role="button"
-               aria-pressed="true">Добавить воспоминание</a>
+    <section id="services" class="services">
+        <div class="container">
+
+            <div class="row">
+            {% for place in places %}
+                <div class="col-md-6 col-lg-3 align-items-stretch mb-5 mb-lg-0">
+                  <div class="icon-box" data-aos="fade-up" >
+                    <h4 class="title"><a href="{% url 'edit_place' place.id %}"> {{ place.name }} </a></h4>
+                    <p class="description"> {{ place.comment }}</p>
+                  </div>
+                </div>
+
+            {% empty %}
+
+            <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+              <h2> У вас пока нет ни одного воспоминания </h2>
             </div>
+
+            {% endfor %}
+            </div>
+
         </div>
-    </div>
+      </section><!-- End Services Section -->
 
 </section>
 
