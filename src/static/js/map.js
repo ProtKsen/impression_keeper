@@ -1,13 +1,29 @@
 ymaps.ready(init);
 
 function init() {
+
+    var initLat;
+    initLat = document.getElementById('id_latitude').value;
+    var initLong;
+    initLong = document.getElementById('id_longitude').value;
+
+    if (!initLat || !initLong) {
+        initLat = 56.85194,
+        initLong = 60.6122;
+        document.getElementById('id_latitude').value = initLat;
+        document.getElementById('id_longitude').value = initLong;
+    };
+
     var myPlacemark,
         myMap = new ymaps.Map('map', {
-            center: [55.753994, 37.622093],
+            center: [initLat, initLong],
             zoom: 9
         }, {
             searchControlProvider: 'yandex#search'
         });
+
+    myPlacemark = createPlacemark([initLat, initLong],);
+    myMap.geoObjects.add(myPlacemark);
 
     // Слушаем клик на карте.
     myMap.events.add('click', function (e) {
@@ -35,7 +51,7 @@ function init() {
     // Создание метки.
     function createPlacemark(coords) {
         return new ymaps.Placemark(coords, {
-            iconCaption: 'поиск...'
+            iconCaption: ''
         }, {
             preset: 'islands#violetDotIconWithCaption',
             draggable: true
