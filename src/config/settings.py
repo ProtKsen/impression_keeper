@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
+    "allauth.socialaccount.providers.vk",
     "home",
     "authentication",
     "user_profile",
@@ -147,5 +148,11 @@ SOCIALACCOUNT_PROVIDERS = {
             "profile",
             "email",
         ],
-    }
+    },
+    "vk": {
+        "SCOPE": [
+            "profile",
+            "email",
+        ],
+    },
 }

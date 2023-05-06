@@ -10,33 +10,24 @@ Impression Keeper
 
 {% block content %}
 
-<section id="hero">
-    <div class="hero-container" data-aos="fade-up">
-        <div class="row d-flex justify-content-center align-items-center h-200">
+<section id="services" class="services">
+    <div class="container">
 
-            <div class="col-md-auto">
-                <div class="row">
-                    <a class="btn btn-primary "
-                    style="background-color: #dd4b39; border: #dd4b39;"
-                    href="{% provider_login_url 'google' action='reauthenticate' %}"
-                    role="button">
-                    <h3> Continue with Google </h3>
-                    </a>
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+            <h2> Войти в личный кабинет </h2>
+        </div>
+        <div class="content">
+
+            <div class="row justify-content-center">
+                <div class="col-3 text-center">
+                    <a href="{% provider_login_url 'google' action='reauthenticate' %}" class="services-btn"> C помощью Google <i class="bx bx-chevron-right"></i></a>
                 </div>
-
-                <div class="row">
-                    <a class="btn btn-primary "
-                        style="background-color: #0077FF; border: #0077FF;"
-                        href="#"
-                        role="button">
-                        <h3> Continue with VK </h3>
-                    </a>
+                <div class="col-3 text-center">
+                    <a href="{% provider_login_url 'vk' action='reauthenticate' %}" class="services-btn"> C помощью VK <i class="bx bx-chevron-right"></i></a>
                 </div>
-
             </div>
-
         </div>
     </div>
-</section><!-- End Hero -->
+</section>
 
 {% endblock content %}
