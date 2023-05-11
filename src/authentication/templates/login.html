@@ -10,7 +10,7 @@ Impression Keeper
 
 {% block content %}
 
-<section id="services" class="services">
+<section id="login" class="login">
     <div class="container">
 
         <div class="section-title" data-aos="fade-in" data-aos-delay="100">
@@ -20,10 +20,10 @@ Impression Keeper
 
             <div class="row justify-content-center">
                 <div class="col-3 text-center">
-                    <a href="{% provider_login_url 'google' action='reauthenticate' %}" class="services-btn"> C помощью Google <i class="bx bx-chevron-right"></i></a>
+                    <a href="{% provider_login_url 'google' action='reauthenticate' %}" class="login-btn"> C помощью Google <i class="bx bx-chevron-right"></i></a>
                 </div>
                 <div class="col-3 text-center">
-                    <a href="{% provider_login_url 'vk' action='reauthenticate' %}" class="services-btn"> C помощью VK <i class="bx bx-chevron-right"></i></a>
+                    <a href="{% provider_login_url 'vk' action='reauthenticate' %}" class="login-btn"> C помощью VK <i class="bx bx-chevron-right"></i></a>
                 </div>
             </div>
         </div>

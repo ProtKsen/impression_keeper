@@ -31,7 +31,7 @@
     <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/my_style.css' %}" rel="stylesheet">
 
     <!-- =======================================================
     * Template Name: Squadfree - v4.7.0
@@ -54,9 +54,9 @@
         <nav id="navbar" class="navbar">
             <ul>
                 {% if user.is_authenticated %}
-                <li><a class="nav-link" href="{% url 'user_profile' %}">My profile</a></li>
+                <li><a class="nav-link" href="{% url 'user_profile' %}">Моя страница</a></li>
                 {% else %}
-                <li><a class="nav-link" href="{% url 'login' %} ">SIGN IN</a></li>
+                <li><a class="nav-link" href="{% url 'login' %} ">Войти</a></li>
                 {% endif %}
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>

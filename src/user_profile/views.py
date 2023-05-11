@@ -34,7 +34,7 @@ def add_place(request):
 
     form = PlaceForm()
     context = {"ymap_api_key": os.environ["YANDEX_MAPS_API_KEY"], "form": form}
-    return render(request, "add_place.html", context)
+    return render(request, "edit_place.html", context)
 
 
 @login_required
@@ -61,6 +61,9 @@ def edit_place(request, id: int):
                 setattr(place, key, value)
             place.save()
             return redirect("user_profile")
+        form = PlaceForm(initial=initial_data)
+        context = {"form": form}
+        return render(request, "edit_place.html", context)
     else:
         form = PlaceForm(initial=initial_data)
         context = {"form": form}
