@@ -188,7 +188,7 @@ def test_delete_place_get_request_from_authorized_user_successed(client, create_
 def test_delete_place_get_request_from_authorized_user_permission_denied_redirect(
     client, create_user, login_user
 ):
-    user2 = User.objects.get(username="TestUse2r")
+    user2 = User.objects.create_user(username="TestUser2", password="TestPassword")
     place = PlaceFactory(user=user2)
     place.save()
     url = reverse("delete_place", args=[place.id])
