@@ -40,38 +40,42 @@ def add_place(request):
 @login_required
 def edit_place(request, id: int):
     place = Place.objects.get(id=id)
-    initial_data = {
-        "name": place.name,
-        "comment": place.comment,
-        "latitude": place.latitude,
-        "longitude": place.longitude,
-    }
-    if request.method == "POST":
-        form = PlaceForm(request.POST)
-        if form.is_valid():
-            form_data = form.cleaned_data
+    if place.user == request.user:
+        initial_data = {
+            "name": place.name,
+            "comment": place.comment,
+            "latitude": place.latitude,
+            "longitude": place.longitude,
+        }
+        if request.method == "POST":
+            form = PlaceForm(request.POST)
+            if form.is_valid():
+                form_data = form.cleaned_data
 
-            new_place_data = {}
-            for key, val in form_data.items():
-                if val:
-                    new_place_data[key] = val
-            new_place_data["user"] = request.user
-            place = Place.objects.get(id=id)
-            for key, value in new_place_data.items():
-                setattr(place, key, value)
-            place.save()
-            return redirect("user_profile")
-        form = PlaceForm(initial=initial_data)
-        context = {"form": form}
-        return render(request, "edit_place.html", context)
-    else:
-        form = PlaceForm(initial=initial_data)
-        context = {"form": form}
-        return render(request, "edit_place.html", context)
+                new_place_data = {}
+                for key, val in form_data.items():
+                    if val:
+                        new_place_data[key] = val
+                new_place_data["user"] = request.user
+                place = Place.objects.get(id=id)
+                for key, value in new_place_data.items():
+                    setattr(place, key, value)
+                place.save()
+                return redirect("user_profile")
+            form = PlaceForm(initial=initial_data)
+            context = {"form": form}
+            return render(request, "edit_place.html", context)
+        else:
+            form = PlaceForm(initial=initial_data)
+            context = {"form": form}
+            return render(request, "edit_place.html", context)
+    return redirect("home")
 
 
 @login_required
 def delete_place(request, id: int):
     place = Place.objects.get(id=id)
-    place.delete()
-    return redirect("user_profile")
+    if place.user == request.user:
+        place.delete()
+        return redirect("user_profile")
+    return redirect("home")
