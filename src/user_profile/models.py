@@ -7,7 +7,7 @@ class Place(models.Model):
     name = models.CharField(max_length=100)
     latitude = models.FloatField()
     longitude = models.FloatField()
-    comment = models.CharField(max_length=1000, default="", blank=True)
+    comment = models.CharField(max_length=1000, blank=True)
 
     def __str__(self):
         return self.name

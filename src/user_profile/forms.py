@@ -7,6 +7,7 @@ class PlaceForm(forms.ModelForm):
     class Meta:
         model = Place
         fields = ("name", "latitude", "longitude", "comment")
+        labels = {"name": "", "comment": ""}
         widgets = {
             "name": forms.TextInput(attrs={"placeholder": "Название"}),
             "comment": forms.Textarea(attrs={"placeholder": "Комментарий", "rows": 4}),
