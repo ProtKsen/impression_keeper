@@ -33,9 +33,16 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
+    "allauth.socialaccount.providers.vk",
     "home",
     "authentication",
+    "user_profile",
+    "crispy_forms",
+    "crispy_bootstrap5",
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -131,7 +138,7 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 2
 
 LOGIN_URL = "/authenticate/login/"
-LOGIN_REDIRECT_URL = "home"
+LOGIN_REDIRECT_URL = "/userprofile/"
 
 # Additional configuration settings
 SOCIALACCOUNT_QUERY_EMAIL = True
@@ -146,5 +153,11 @@ SOCIALACCOUNT_PROVIDERS = {
             "profile",
             "email",
         ],
-    }
+    },
+    "vk": {
+        "SCOPE": [
+            "profile",
+            "email",
+        ],
+    },
 }

@@ -54,6 +54,7 @@ jobs:
           POSTGRES_DB: ${{ secrets.POSTGRES_DB_TEST }}
           POSTGRES_HOST: localhost
           POSTGRES_PORT: 5432
+          YANDEX_MAPS_API_KEY: ${{ secrets.YANDEX_MAPS_API_KEY }}
 
       - name: Create Pull Request
         run: |
