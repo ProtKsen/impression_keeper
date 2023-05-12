@@ -1,6 +1,7 @@
 """
 Django settings for config project
 """
+import json
 import os
 from pathlib import Path
 
@@ -15,10 +16,9 @@ if os.path.isfile(dotenv_file):
 
 SECRET_KEY = os.environ["SECRET_KEY"]
 
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = json.loads(os.environ.get("ALLOWED_HOSTS", "[]"))
 
 # Application definition
 INSTALLED_APPS = [
