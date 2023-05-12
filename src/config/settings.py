@@ -1,6 +1,7 @@
 """
 Django settings for config project
 """
+import json
 import os
 from pathlib import Path
 
@@ -17,8 +18,7 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = json.loads(os.environ["ALLOWED_HOSTS"])
 
 # Application definition
 INSTALLED_APPS = [
