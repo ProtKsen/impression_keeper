@@ -135,7 +135,7 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
-SITE_ID = 2
+SITE_ID = int(os.environ.get("SITE_ID", 2))
 
 LOGIN_URL = "/authenticate/login/"
 LOGIN_REDIRECT_URL = "/userprofile/"
