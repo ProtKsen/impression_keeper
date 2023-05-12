@@ -9,6 +9,7 @@ from user_profile.models import Place
 
 @login_required
 def user_profile(request):
+    """User profile page contains name, email, and all user's places"""
     user = request.user
     places = Place.objects.filter(user=request.user.id)
     context = {"user": user, "places": places}
@@ -17,6 +18,8 @@ def user_profile(request):
 
 @login_required
 def add_place(request):
+    """Adding new places"""
+
     if request.method == "POST":
         form = PlaceForm(request.POST)
         if form.is_valid():
@@ -39,7 +42,10 @@ def add_place(request):
 
 @login_required
 def edit_place(request, id: int):
+    """Eddit places"""
     place = Place.objects.get(id=id)
+
+    # check if the given place belongs to the current user
     if place.user == request.user:
         initial_data = {
             "name": place.name,
@@ -47,6 +53,7 @@ def edit_place(request, id: int):
             "latitude": place.latitude,
             "longitude": place.longitude,
         }
+
         if request.method == "POST":
             form = PlaceForm(request.POST)
             if form.is_valid():
@@ -57,24 +64,31 @@ def edit_place(request, id: int):
                     if val:
                         new_place_data[key] = val
                 new_place_data["user"] = request.user
+
                 place = Place.objects.get(id=id)
                 for key, value in new_place_data.items():
                     setattr(place, key, value)
                 place.save()
+
                 return redirect("user_profile")
+
             form = PlaceForm(initial=initial_data)
             context = {"form": form}
             return render(request, "edit_place.html", context)
+
         else:
             form = PlaceForm(initial=initial_data)
             context = {"form": form}
             return render(request, "edit_place.html", context)
+
     return redirect("home")
 
 
 @login_required
 def delete_place(request, id: int):
     place = Place.objects.get(id=id)
+
+    # check if the given place belongs to the current user
     if place.user == request.user:
         place.delete()
         return redirect("user_profile")
