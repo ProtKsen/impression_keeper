@@ -18,6 +18,7 @@ factory-boy = "^3.2.1"
 django-crispy-forms = "^2.0"
 crispy-bootstrap5 = "^0.7"
 whitenoise = "^6.4.0"
+coveralls = "^3.3.1"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.2.2"
