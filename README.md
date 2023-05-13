@@ -2,6 +2,8 @@
 
 Веб приложение, позволяющее пользователям сохранять впечатления от посещенных мест.
 
+[![Coverage Status](https://coveralls.io/repos/github/ProtKsen/impression_keeper/badge.svg?branch=feature)](https://coveralls.io/github/ProtKsen/impression_keeper?branch=feature)
+
 home page|user profile|edit place
 :-:|:-:|:-:
 ![Alt-текст](https://github.com/ProtKsen/impression_keeper/blob/main/screenshots/home.png?raw=true) | ![Alt-текст](https://github.com/ProtKsen/impression_keeper/blob/main/screenshots/user_profile.png?raw=true) | ![Alt-текст](https://github.com/ProtKsen/impression_keeper/blob/main/screenshots/edit_place.png?raw=true)
