@@ -16,7 +16,7 @@ services:
     env_file:
       - .env
     command:
-      bash -c "python src/manage.py migrate && python src/manage.py runserver 0.0.0.0:8000"
+      bash -c "python src/manage.py migrate && python src/manage.py collectstatic && python src/manage.py runserver 0.0.0.0:8000"
     ports:
       - 8000:8000
     working_dir: /app
