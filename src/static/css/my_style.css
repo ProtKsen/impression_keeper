@@ -518,6 +518,7 @@ body {
     transition: 0.3s;
     position: relative;
     font-size: 18px;
+    margin-top: 10px;
   }
 
   .login .content .login-btn i {
