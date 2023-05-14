@@ -8,7 +8,7 @@ home page|user profile|edit place
 :-:|:-:|:-:
 ![Alt-текст](https://github.com/ProtKsen/impression_keeper/blob/main/screenshots/home.png?raw=true) | ![Alt-текст](https://github.com/ProtKsen/impression_keeper/blob/main/screenshots/user_profile.png?raw=true) | ![Alt-текст](https://github.com/ProtKsen/impression_keeper/blob/main/screenshots/edit_place.png?raw=true)
 
-* Приложение запущено на yandex cloud и доступно по адресу <http://158.160.96.100.nip.io:8000/>.
+* Приложение запущено на yandex cloud и доступно по адресу http://158.160.96.100.nip.io:8000/.
 
 * Приложение реализовано на **Django**, база данных - **PostgreSQL**, для входа в профиль пользователя через Google/VK используется библиотека **django-allauth**, карта - **yandex map**, менеджер зависимостей - **poetry**, стили **Bootstrap**, тестирование - **pytest**.
 
