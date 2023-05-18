@@ -1,6 +1,7 @@
 import os
 
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import redirect, render
 
 from user_profile.forms import PlaceForm
@@ -43,7 +44,12 @@ def add_place(request):
 @login_required
 def edit_place(request, id: int):
     """Eddit places"""
-    place = Place.objects.get(id=id)
+
+    # check if there is a place with the given id
+    try:
+        place = Place.objects.get(id=id)
+    except ObjectDoesNotExist:
+        return redirect("home")
 
     # check if the given place belongs to the current user
     if place.user == request.user:
@@ -86,7 +92,11 @@ def edit_place(request, id: int):
 
 @login_required
 def delete_place(request, id: int):
-    place = Place.objects.get(id=id)
+    # check if there is a place with the given id
+    try:
+        place = Place.objects.get(id=id)
+    except ObjectDoesNotExist:
+        return redirect("home")
 
     # check if the given place belongs to the current user
     if place.user == request.user:

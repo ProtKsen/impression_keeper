@@ -126,6 +126,16 @@ def test_edit_place_get_request_from_authorized_user_permission_denied_redirect(
 
 
 @pytest.mark.django_db
+def test_edit_place_get_request_from_authorized_user_not_existed_place_redirect(
+    client, create_user, login_user
+):
+    url = reverse("edit_place", args=[100])
+    response = client.get(url, follow=True)
+    assert response.status_code == 200
+    assertTemplateUsed(response, "home.html")
+
+
+@pytest.mark.django_db
 def test_edit_place_post_request_edits_place_successed(client, create_user, login_user):
     user = User.objects.get(username="TestUser")
     place = PlaceFactory(user=user)
@@ -192,6 +202,16 @@ def test_delete_place_get_request_from_authorized_user_permission_denied_redirec
     place = PlaceFactory(user=user2)
     place.save()
     url = reverse("delete_place", args=[place.id])
+    response = client.get(url, follow=True)
+    assert response.status_code == 200
+    assertTemplateUsed(response, "home.html")
+
+
+@pytest.mark.django_db
+def test_delete_place_get_request_from_authorized_user_not_existed_place_redirect(
+    client, create_user, login_user
+):
+    url = reverse("delete_place", args=[100])
     response = client.get(url, follow=True)
     assert response.status_code == 200
     assertTemplateUsed(response, "home.html")
